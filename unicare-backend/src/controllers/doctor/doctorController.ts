@@ -17,9 +17,8 @@ import {
 // get all doctors details
 export const getAllDoctorsController = async (
   req: Request & { user?: { role: string } },
-  res: Response
+  res: Response,
 ) => {
-
   const { role } = req.user || {};
   if (!role && role !== "receptionist") {
     return res.status(403).json({ message: "Unauthorized access" });
@@ -32,7 +31,6 @@ export const getAllDoctorsController = async (
     res.status(500).json({ message: "Failed to fetch all doctors", error });
   }
 };
-
 
 // View a student's complete medical history
 export const getMedicalHistoryController = async (
@@ -121,8 +119,8 @@ export const createPrescriptionController = async (
 
 
 export const requestLabTestController = async (
-  req: Request & { user?: { role: string, id: string | null } },
-  res: Response
+  req: Request & { user?: { role: string; id: string | null } },
+  res: Response,
 ) => {
 
   const { regNo } = req.params;
@@ -218,7 +216,7 @@ export const updatePatientTypeController = async (
 
 export const getLabResultsController = async (
   req: Request & { user?: { role: string } },
-  res: Response
+  res: Response,
 ) => {
   const { regNo } = req.params;
 
@@ -241,8 +239,7 @@ export const getLabResultsController = async (
       .status(500)
       .json({ message: "Server failed to fetch lab results", error });
   }
-}
-  
+};
 
 
 // View and update the patient's status during treatment
