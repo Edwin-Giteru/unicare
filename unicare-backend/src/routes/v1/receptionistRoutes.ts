@@ -7,7 +7,10 @@ import {
   getStudent,
 } from "../../controllers/receptionist/receptionistController";
 import validateRequest from "../../middleware/validateRequest";
-import { receptionistAppointmentSchema, receptionistSchema } from "../../validation/receptionist";
+import {
+  receptionistAppointmentSchema,
+  receptionistSchema,
+} from "../../validation/receptionist";
 
 const receptionistRouter = express.Router();
 
@@ -214,9 +217,9 @@ receptionistRouter
   .post(
     "/appointment",
     validateRequest(receptionistAppointmentSchema),
-    ( req: Request, res: Response) => {
+    (req: Request, res: Response) => {
       bookDoctorAppointment(req, res);
-    }
+    },
   )
   .patch(
     "/room",

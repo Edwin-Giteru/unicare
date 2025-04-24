@@ -6,7 +6,6 @@ import {
   labTestRequestTable,
 } from "../db/schema";
 
-
 export async function getAllDoctors() {
   try {
     const doctors = await db
@@ -53,9 +52,7 @@ export async function getStudentMedicalHistory(regNo: string) {
         completed_at: labTestRequestTable.completed_at,
       })
       .from(labTestRequestTable)
-      .where(
-        eq(labTestRequestTable.medical_history_id, medicalHistory[0].id),
-      )
+      .where(eq(labTestRequestTable.medical_history_id, medicalHistory[0].id))
       .orderBy(desc(labTestRequestTable.requested_at));
 
     // Merge medical history and lab tests
@@ -124,7 +121,7 @@ export async function requestStudentLabTest(
   } catch (error) {
     console.error("Error requesting lab test:", error);
     throw new Error("Failed to request lab test");
- }
+  }
 }
 export async function updatePatientType(
   patientType: "outpatient" | "inpatient",

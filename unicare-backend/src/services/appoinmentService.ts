@@ -10,8 +10,7 @@ export const bookAppointment = async (
   regNo: string,
   doctorId: string,
   date: string | any,
-  // requestingUser: { id: string; role: string } 
-
+  // requestingUser: { id: string; role: string }
 ) => {
   const appointmentDate = new Date(date);
   if (isNaN(appointmentDate.getTime())) {
@@ -21,14 +20,14 @@ export const bookAppointment = async (
   //   throw new Error("Only receptionists can book appointments.");
   // }
 
-
   return await db
     .insert(AppointmentsTable)
     .values({
       reg_no: regNo,
       doctor_id: doctorId,
       appointment_date: appointmentDate,
-    }).returning();
+    })
+    .returning();
 };
 
 export const studentExists = async (regNo: string): Promise<boolean> => {

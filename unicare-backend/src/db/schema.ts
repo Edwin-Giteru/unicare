@@ -169,7 +169,6 @@ export const PatientMedicalRecords = pgTable("medical_records", {
   updated_at: timestamp("updated_at").defaultNow(),
 });
 
-// medical records relations
 export const PatientMedicalRecordsRelations = relations(
   PatientMedicalRecords,
   ({ many, one }) => ({
@@ -280,6 +279,26 @@ export const DrugsTable = pgTable("drugs", {
   id: uuid("id").defaultRandom().primaryKey(),
   name: varchar("name", { length: 50 }).notNull(),
   quantity: integer("quantity").notNull(),
+  price: integer("price").notNull(),
   created_at: timestamp("created_at").defaultNow(),
   updated_at: timestamp("updated_at").defaultNow(),
+});
+
+export const PrescriptionsTable = pgTable("prescriptions", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  reg_no: varchar("reg_no", { length: 15 }).references(
+    () => StudentTable.reg_no,
+  ),
+  status: text("status").default("pending"),
+  valid_date: timestamp("valid_date").notNull(),
+  created_at: timestamp("created_at").defaultNow(),
+  updated_at: timestamp("updated_at").defaultNow(),
+});
+
+export const InventoryHistoryTable = pgTable("inventory_history", {
+  id: uuid("id").defaultRandom().primaryKey(),
+  drug_id: uuid("drug_id").references(() => DrugsTable.id),
+  change: integer("change").notNull(),
+  reason: text("reason").notNull(),
+  timestamp: timestamp("timestamp").defaultNow(),
 });

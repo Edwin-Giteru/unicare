@@ -17,9 +17,8 @@ import {
 // get all doctors details
 export const getAllDoctorsController = async (
   req: Request & { user?: { role: string } },
-  res: Response
+  res: Response,
 ) => {
-
   const { role } = req.user || {};
   if (!role && role !== "receptionist") {
     return res.status(403).json({ message: "Unauthorized access" });
@@ -32,7 +31,6 @@ export const getAllDoctorsController = async (
     res.status(500).json({ message: "Failed to fetch all doctors", error });
   }
 };
-
 
 // View a student's complete medical history
 export const getMedicalHistoryController = async (
@@ -119,12 +117,10 @@ export const createPrescriptionController = async (
   }
 };
 
-
 export const requestLabTestController = async (
-  req: Request & { user?: { role: string, id: string | null } },
-  res: Response
+  req: Request & { user?: { role: string; id: string | null } },
+  res: Response,
 ) => {
-
   const { regNo } = req.params;
   const { testName, testDescription } = req.body;
   const { role, id } = req.user || {};
@@ -158,11 +154,10 @@ export const requestLabTestController = async (
     if (result.length === 0) {
       return res.status(400).json({ message: "Failed to request lab test" });
     }
-   return res.status(201).json({
+    return res.status(201).json({
       message: "Lab test requested successfully",
       data: { result, studentName: student[0].name },
     });
-
   } catch (error) {
     return res
       .status(500)
@@ -206,7 +201,6 @@ export const updatePatientTypeController = async (
       message: "Patient type updated successfully",
       data: { result, studentName: student[0].name },
     });
-
   } catch (error) {
     return res
       .status(500)
@@ -218,7 +212,7 @@ export const updatePatientTypeController = async (
 
 export const getLabResultsController = async (
   req: Request & { user?: { role: string } },
-  res: Response
+  res: Response,
 ) => {
   const { regNo } = req.params;
 
@@ -241,9 +235,7 @@ export const getLabResultsController = async (
       .status(500)
       .json({ message: "Server failed to fetch lab results", error });
   }
-}
-  
-
+};
 
 // View and update the patient's status during treatment
 export const updateTreatmentStatusController = async (

@@ -33,7 +33,7 @@ app.use(express.urlencoded({ extended: false }));
  */
 app.use("/api/v1", appRouter);
 // app.use("/api/v1/appointments", appointmentRouter);
-app.use("/api/v1/pharmacist", pharmacistRouter);
+// app.use("/api/v1/pharmacist", pharmacistRouter);
 
 /**
  * route to test server
