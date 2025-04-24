@@ -1,4 +1,4 @@
-import express, {Request, Response} from "express";
+import express, { Request, Response } from "express";
 import {
   createDrug,
   listDrugs,
@@ -62,9 +62,14 @@ const pharmacistRouter = express.Router();
  *       401:
  *         description: Unauthorized
  */
-pharmacistRouter.post("/add", authenticateUser, validateRequest(drugSchema), (req: Request, res: Response) => {
-  createDrug(req, res);
-});
+pharmacistRouter.post(
+  "/add",
+  authenticateUser,
+  validateRequest(drugSchema),
+  (req: Request, res: Response) => {
+    createDrug(req, res);
+  },
+);
 
 /**
  * @swagger
@@ -94,9 +99,14 @@ pharmacistRouter.post("/add", authenticateUser, validateRequest(drugSchema), (re
  *       401:
  *         description: Unauthorized
  */
-pharmacistRouter.get("/list", authenticateUser, validateRequest(drugSchema), (req: Request, res: Response) => {
-  listDrugs(req, res);
-});
+pharmacistRouter.get(
+  "/list",
+  authenticateUser,
+  validateRequest(drugSchema),
+  (req: Request, res: Response) => {
+    listDrugs(req, res);
+  },
+);
 
 /**
  * @swagger
@@ -137,7 +147,7 @@ pharmacistRouter.post(
   validateRequest(administerDrugSchema),
   (req: Request, res: Response) => {
     handleAdministerDrug(req, res);
-  }
+  },
 );
 
 /**
@@ -163,9 +173,13 @@ pharmacistRouter.post(
  *       401:
  *         description: Unauthorized
  */
-pharmacistRouter.get("/prescriptions/:reg_no", authenticateUser, (req: Request, res: Response) => {
-  viewPrescriptions(req, res);
-});
+pharmacistRouter.get(
+  "/prescriptions/:reg_no",
+  authenticateUser,
+  (req: Request, res: Response) => {
+    viewPrescriptions(req, res);
+  },
+);
 
 /**
  * @swagger
@@ -195,7 +209,7 @@ pharmacistRouter.post(
   authenticateUser,
   (req: Request, res: Response) => {
     confirmDrugDispensation(req, res);
-  }
+  },
 );
 
 /**

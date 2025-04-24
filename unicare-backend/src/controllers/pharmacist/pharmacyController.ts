@@ -57,10 +57,9 @@ export const listDrugs = async (_req: Request, res: Response) => {
 };
 
 export const handleAdministerDrug = async (
-  req: Request & { user?: { id: string, role: string }},
-  res: Response
+  req: Request & { user?: { id: string; role: string } },
+  res: Response,
 ) => {
-
   const { role } = req.user || {};
   if (role !== "pharmacist") {
     return res.status(403).json({ message: "Access denied" });
@@ -78,10 +77,9 @@ export const handleAdministerDrug = async (
 };
 
 export const viewPrescriptions = async (
-  req: Request & { user?: { id: string, role: string }},
+  req: Request & { user?: { id: string; role: string } },
   res: Response,
 ) => {
-
   const { role } = req.user || {};
   if (role !== "pharmacist") {
     return res.status(403).json({ message: "Access denied" });
@@ -100,10 +98,9 @@ export const viewPrescriptions = async (
 };
 
 export const confirmDrugDispensation = async (
-  req: Request & { user?: { id: string, role: string }},
+  req: Request & { user?: { id: string; role: string } },
   res: Response,
 ) => {
-
   const { role } = req.user || {};
   if (role !== "pharmacist") {
     return res.status(403).json({ message: "Access denied" });
@@ -131,10 +128,9 @@ export const confirmDrugDispensation = async (
 };
 
 export const updateDrugInventory = async (
-  req: Request & { user?: { id: string, role: string }},
-  res: Response
+  req: Request & { user?: { id: string; role: string } },
+  res: Response,
 ) => {
-
   const { role } = req.user || {};
   if (role !== "pharmacist") {
     return res.status(403).json({ message: "Access denied" });

@@ -8,11 +8,6 @@ import {
   updateTreatmentStatusController,
   getAllDoctorsController,
 } from "../../controllers/doctor/doctorController";
-<<<<<<< HEAD
-import authenticateUser from "../../middleware/auth";
-=======
-import authenticateUser  from "../../middleware/auth";
->>>>>>> df837cb305d306a0a8d34fa7be83fa7e5289140d
 
 const doctorRouter = express.Router();
 
